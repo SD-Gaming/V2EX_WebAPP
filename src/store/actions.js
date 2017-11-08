@@ -78,5 +78,22 @@ export default {
     	}).catch((e) => {
     		console.log('getUserPosts action error: ',e)
     	})
+    },
+    getNodes(context,node_name){
+    	axios({
+    		methods:'get',
+    		url:'/api/topics/show.json',
+    		params:{
+    			node_name:node_name
+    		}
+    	})
+    	.then((res) => {
+    		if(res.status === 200){
+    			context.commit('loadNodes',res.data)
+    		}
+    	})
+    	.catch((e) => {
+    		console.log('getNodes action error: ',e)
+    	})
     }
 }

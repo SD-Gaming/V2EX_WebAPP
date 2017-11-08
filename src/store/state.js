@@ -3,5 +3,6 @@ export default {
     articleContent: [],
     articleReplies:[],
     userInfo: {},
-    userPosts:[]
+    userPosts:[],
+    nodes:[]
 }

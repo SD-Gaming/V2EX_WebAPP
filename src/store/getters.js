@@ -4,4 +4,5 @@ export default {
     readArticlesReplies: state => state.articleReplies,
     readUserInfo: state => state.userInfo,
     readUserPosts: state => state.userPosts,
+    readNodes: state => state.articleLists
 }

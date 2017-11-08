@@ -13,5 +13,8 @@ export default {
     },
     loadUserPosts(state, data) {
         state.userPosts = data
+    },
+    loadNodes(state, data) {
+    	state.articleLists = data
     }
 }
