@@ -3,7 +3,6 @@
 		  <mu-circular-progress :size="80" :strokeWidth="4" color="red"/>
 	</div>
 	<div id="content" v-else>
-		<!--<mobile-tear-sheet>-->
 		 	<mu-list>
 		 		<div class="tab-bar" @click="get_nodes_topics">
 		 			<a name="hot">最热</a>
@@ -12,25 +11,17 @@
 		 			<a name="apple">Apple</a>
 		 			<a name="jobs">酷工作</a>
 		 			<a name="deals">交易</a>
-		 			<a name="city">城市</a>
+		 			<a name="qna">问与答</a>
 		 		</div>
-		 		<!--<div class="nav-bar">
-		 			<a>问与答</a>
-		 			<a href="/">最热</a>
-		 			<a>全部</a>
-		 			<a>R2</a>
-		 			<a>节点</a>
-		 			<a>关注</a>
-		 		</div>-->
+		 		
 			    <mu-sub-header>
-			    	最热主题
+			    	{{tab}}
 			    </mu-sub-header>
 			    <mu-list-item  v-for="topic in topic_list" :key='topic.id' :title="topic.title" :to='{name:"article",params:{id:topic.id}}'>
-		      		<mu-avatar :src="topic.member.avatar_normal" slot="leftAvatar"/>
+		      		<mu-avatar :src="topic.member.avatar_normal" slot="leftAvatar" alt='图片失效'/>
 		      		<mu-badge :content="(topic.replies).toString()" primary slot="after"/>
 			    </mu-list-item>
 		  	</mu-list>
-		<!--</mobile-tear-sheet>-->
 	</div>
 </template>
 
@@ -40,20 +31,23 @@ export default {
 	data () {
 	    return {
 	    	loading:false,
+	    	tab:'最热'
 	    }
 	},
 	methods:{
 		getdata(){
 			this.$store.dispatch('getArticleLists')
 		},
+		//采取事件委托方式，绑定事件到链接父节点
 		get_nodes_topics(e){
-			console.log(e.target.name)
 			if (e.target.name === 'hot'){
 				this.loading=false;
 				this.getdata();
-			}else if (e.target.name === 'tech') {
+				this.tab = '最热';
+			}else {
 				this.loading=false;
-				this.$store.dispatch('getNodes','tech')
+				this.$store.dispatch('getNodes',e.target.name);
+				this.tab = e.target.innerText	;
 			}
 		}
 	},

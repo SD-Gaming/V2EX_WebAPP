@@ -5,7 +5,7 @@
 	<div class="user" v-else>
 		<mu-card>
 		  	<mu-card-header :title="user_info.username" :subTitle="'加入于 '+createdTime">
-			    <mu-avatar :src="user_info.avatar_large" slot="avatar"/>
+			    <mu-avatar :src="user_info.avatar_large" slot="avatar" alt='图片失效'/>
 		  	</mu-card-header>
 		  	<mu-card-text>
 			    历史发布的主题
@@ -49,6 +49,7 @@ export default {
 		user_posts(){
 		    return this.$store.state.userPosts	;
 		},
+		//处理用户创建账号时间
 		createdTime(){
 			let signinTime = this.$store.state.userInfo.created;
 			let time = new Date(signinTime*1000);

@@ -21,7 +21,7 @@ new Vue({
   template: '<App/>',
   components: { App }
 })
-
+//模仿timeago插件显示事件
 Vue.filter('formatDate', function(num) {
 		    if (!num) return ''
 		    var date = new Date(num*1000)

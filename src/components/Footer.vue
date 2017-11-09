@@ -6,7 +6,7 @@
 			</div>
 			<div class="about">
 			  	<mu-raised-button label="关于" class="demo-snackbar-button" @click="showSnackbar"/>
-			  	<mu-snackbar v-if="snackbar" message="API不支持登录、评论功能" action="关闭" @actionClick="hideSnackbar" @close="hideSnackbar"/>
+			  	<mu-snackbar v-if="snackbar" message="API不支持登录、注册、评论功能" action="关闭" @actionClick="hideSnackbar" @close="hideSnackbar"/>
 			</div>
 		</div>
 		<div class="blank">

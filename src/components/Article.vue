@@ -5,7 +5,7 @@
 	<div class="article" v-else>
 	  	<mu-breadcrumb>
 		    <mu-breadcrumb-item href="/">&nbsp&nbspV2EX</mu-breadcrumb-item>
-		    <mu-breadcrumb-item href="/">{{content[0].node.name}}</mu-breadcrumb-item>
+		    <mu-breadcrumb-item >{{content[0].node.title}}</mu-breadcrumb-item>
 	  	</mu-breadcrumb>
 		<mu-card>
 		  	<mu-card-title :title="content[0].title" :subTitle="content[0].created | formatDate"/>
@@ -14,7 +14,7 @@
 		 	
 		 	<router-link :to="{name:'user',params:{loginname:content[0].member.username}}">
 		 		<mu-card-header :title="content[0].member.username" :subTitle="content[0].member.tagline | displaytagline">
-		    		<mu-avatar :src="content[0].member.avatar_large" slot="avatar"/>
+		    		<mu-avatar :src="content[0].member.avatar_large" slot="avatar" alt='图片失效'/>
 		  		</mu-card-header>
 		  	</router-link>
 		  	
@@ -27,7 +27,7 @@
 		 			
 		 			<router-link :to="{name:'user',params:{loginname:reply.member.username}}">
 			 			<mu-card-header :title="reply.member.username" :subTitle="reply.member.tagline | displaytagline">
-					    	<mu-avatar :src="reply.member.avatar_large" slot="avatar"/>
+					    	<mu-avatar :src="reply.member.avatar_large" slot="avatar" alt='图片失效'/>
 					  	</mu-card-header>
 		  			</router-link>
 				  	
@@ -62,12 +62,6 @@ export default {
   		this.$store.dispatch('getReplies',this.$route.params.id)
   	}
   },
-mounted() {
-	  this.$nextTick(function () {
-	    // Code that will run only after the
-	    // entire view has been rendered
-	  })
-	},
   created(){
   	this.getContentData();
   	this.getRepliesData();
@@ -81,11 +75,11 @@ mounted() {
 	  	}
   	},
   	watch:{
+  		//观察 store.state.articleContent 的是否生成，生成后在挂载页面。
+  		//可以防止页面挂载，但是ajax的请求数据还没有生成而报错。
   		content(val){
   			if(val){
 	  			this.loading = true;
-	  			//观察 store.state.articleContent 的是否生成，生成后在挂载页面。
-	  			//可以防止页面挂载，但是ajxj的请求数据还没有生成而报错。
   			}
   		}
   	}
