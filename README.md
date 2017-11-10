@@ -2,6 +2,9 @@
 
 > 一个使用Vuex的个人项目，目标是把V2EX社区的基本功能用Vue2进行移动端的重构,整个项目约耗时一周的业余时间~
 
+## 图片展示
+
+
 ![功能](https://github.com/SD-Gaming/V2EX_WebAPP/blob/master/static/%E5%8A%9F%E8%83%BD%E5%B1%95%E7%A4%BAGIF.gif)
 
 ## Build Setup
