@@ -14,7 +14,9 @@
 	  		
 		  	<ul>
 		  		<template v-for="post of user_posts">
-		  	 		<mu-card-title :title="post.title" :subTitle="post.created | formatDate"/>
+		 			<router-link :to='{name:"article",params:{id:post.id}}'>
+		  	 			<mu-card-title :title="post.title" :subTitle="post.created | formatDate"/>
+		  			</router-link>
 		  		</template>
 		  	</ul>
 		  	
@@ -58,7 +60,7 @@ export default {
 		}
 	},
 	watch:{
-		userInfomation(val){
+		user_info(val){
 			if(val){
 				this.loading=true;
 			}
